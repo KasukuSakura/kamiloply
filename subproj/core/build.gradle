@@ -22,6 +22,11 @@ dependencies {
     testImplementation 'io.github.karlatemp:unsafe-accessor:1.7.0'
 }
 
+task sourcesJar(type: Jar) {
+    archiveClassifier.set 'sources'
+    from sourceSets.main.allSource
+}
+
 publishing {
     publications {
         maven(MavenPublication) {
@@ -30,6 +35,8 @@ publishing {
             version = project.version
 
             from components.java
+            artifact ps_stubjavadoc.get()
+            artifact sourcesJar
 
             pom { pom ->
                 pom.name = project.name
