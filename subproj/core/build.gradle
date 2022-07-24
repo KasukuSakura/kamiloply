@@ -35,7 +35,7 @@ publishing {
             version = project.version
 
             from components.java
-            artifact ps_stubjavadoc.get()
+            artifact project.rootProject.stubJavadoc
             artifact sourcesJar
 
             pom { pom ->
