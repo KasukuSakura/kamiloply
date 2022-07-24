@@ -5,6 +5,33 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+/**
+ * Bind marked method to a bootstrap class with invokedynamic.
+ * <p>
+ * Must mark on a native method.
+ * <p>
+ * Example: <pre>{@code
+ *    @CallSiteBind(
+ *             bootstrap = LambdaMetafactory.class,
+ *             bootstrapName = "metafactory",
+ *             methodName = "accept",
+ *             bootstrapArgs = {
+ *                     @CallSiteBind.BootstrapArg(methodType = "(Ljava/lang/Object;)V"),
+ *                     @CallSiteBind.BootstrapArg(mhv = @CallSiteBind.MethodHandleBind(
+ *                             opcode = SimplifyOpcodes.H_INVOKEINTERFACE,
+ *                             owner = Consumer.class, name = "accept", desc = "(Ljava/lang/Object;)V",
+ *                             itf = true
+ *                     )),
+ *                     @CallSiteBind.BootstrapArg(methodType = "(Ljava/lang/Object;)V"),
+ *             }
+ *     )
+ *     public static native <T> Consumer<T> testlambda(Consumer<T> ps);
+ * }</pre>
+ * <p>
+ * It same as <pre>{@code
+ * public static <T> Consumer<T> testlambda(Consumer<T> ps) { return ps::apply; }
+ * }</pre>
+ */
 @Retention(RetentionPolicy.CLASS)
 @Target(ElementType.METHOD)
 public @interface CallSiteBind {
