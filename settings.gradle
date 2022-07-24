@@ -1,0 +1,17 @@
+rootProject.name = 'kamiloply'
+
+
+include ':kamiloply-api'
+project(':kamiloply-api').projectDir = new File(rootProject.projectDir, 'subproj/api')
+
+include ':kamiloply-core'
+project(':kamiloply-core').projectDir = new File(rootProject.projectDir, 'subproj/core')
+
+include ':kamiloply-gradle'
+project(':kamiloply-gradle').projectDir = new File(rootProject.projectDir, 'subproj/gradle')
+
+include ':kamiloply-testkit'
+project(':kamiloply-testkit').projectDir = new File(rootProject.projectDir, 'subproj/testkit')
+
+
+includeBuild('subproj/testproject')

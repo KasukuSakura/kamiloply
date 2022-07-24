@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+    id 'java-library'
+    id 'io.github.karlatemp.publication-sign'
+    id 'maven-publish'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    api platform('org.ow2.asm:asm-bom:9.3')
+    api 'org.ow2.asm:asm'
+    api 'org.ow2.asm:asm-tree'
+
+    testCompileOnly project(':kamiloply-api')
+    testImplementation 'org.ow2.asm:asm-util'
+    testImplementation 'org.ow2.asm:asm-commons'
+    testImplementation 'io.github.karlatemp:unsafe-accessor:1.7.0'
+}

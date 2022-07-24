@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+    id 'java-library'
+    // gradle-test id 'com.kasukusakura.kamiloply'
+}
+
+repositories {
+    mavenCentral()
+}
+
+def subprojdirs = rootProject.file('..')
+// gradle-test subprojdirs = new File($kamiloply-root, 'subproj')
+
+dependencies {
+    api rootProject.files(new File(subprojdirs, 'api/build/classes/java/main'))
+
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+}
+
+test {
+    useJUnitPlatform()
+    enabled = false
+    // gradle-test enabled = true
+}
+
+compileTestJava {
+    enabled = false
+    // gradle-test enabled = true
+}

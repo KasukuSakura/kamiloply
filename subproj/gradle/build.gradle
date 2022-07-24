@@ -1,0 +1,48 @@
+plugins {
+    id 'io.github.karlatemp.publication-sign'
+    id 'java'
+    id 'java-gradle-plugin'
+    id 'com.gradle.plugin-publish' version '1.0.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly(gradleApi())
+    testImplementation(gradleApi())
+
+    api(project(':kamiloply-core'))
+
+}
+
+pluginBundle {
+    website = "https://github.com/KasukuSakura/kamiloply"
+    vcsUrl = "https://github.com/KasukuSakura/kamiloply"
+    tags = ["framework", "kotlin", "mirai"]
+}
+
+gradlePlugin {
+    testSourceSets(sourceSets.test)
+    plugins {
+        create("kamiloply") {
+            id = "com.kasukusakura.kamiloply"
+            displayName = "Kamiloply"
+            description = project.description
+            implementationClass = "com.kasukusakura.kamiloply.gradle.KamiloplyGradlePlugin"
+        }
+    }
+}
+
+tasks.create('tatst') {
+    doLast {
+        sourceSets.main.output.classesContributors.each { println it }
+
+        sourceSets.main.output.classesDirs.buildDependencies.getDependencies(null).each { tskx ->
+            println tskx
+            tskx.outputs.files.each { println it }
+        }
+    }
+}
+

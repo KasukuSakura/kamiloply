@@ -1,0 +1,19 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+}
+
+def testkit = project
+rootProject.subprojects {
+    if (project != testkit) {
+        dependencies {
+            testImplementation(testkit)
+        }
+    }
+}
