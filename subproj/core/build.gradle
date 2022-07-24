@@ -21,3 +21,20 @@ dependencies {
     testImplementation 'org.ow2.asm:asm-commons'
     testImplementation 'io.github.karlatemp:unsafe-accessor:1.7.0'
 }
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = project.group
+            artifactId = project.name
+            version = project.version
+
+            from components.java
+
+            pom { pom ->
+                pom.name = project.name
+                pom.description = project.description
+            }
+        }
+    }
+}

@@ -1,0 +1,15 @@
+{
+  "scm": "https://github.com/KasukuSakura/kamiloply",
+  "license": {
+    "name": "Apache License 2.0",
+    "url": "https://choosealicense.com/licenses/apache-2.0/"
+  },
+  "devs": [
+    ///:: [ <ID>, <Name>, <E-Mail> ]
+    [
+      "KasukuSakura",
+      "KasukuSakura",
+      "support@kasukusakura.com"
+    ]
+  ]
+}
