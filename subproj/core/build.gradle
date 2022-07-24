@@ -5,6 +5,8 @@ plugins {
     id 'maven-publish'
 }
 
+description 'The core of kamiloply'
+
 repositories {
     mavenCentral()
 }

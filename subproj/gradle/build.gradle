@@ -5,6 +5,8 @@ plugins {
     id 'com.gradle.plugin-publish' version '1.0.0'
 }
 
+description 'A gradle plugin for advanced java coding'
+
 repositories {
     mavenCentral()
 }
@@ -20,7 +22,7 @@ dependencies {
 pluginBundle {
     website = "https://github.com/KasukuSakura/kamiloply"
     vcsUrl = "https://github.com/KasukuSakura/kamiloply"
-    tags = ["framework", "kotlin", "mirai"]
+    tags = ["java", "asm"]
 }
 
 gradlePlugin {
