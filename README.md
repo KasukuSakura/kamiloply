@@ -8,7 +8,7 @@ Kamiloply is a system to direct linking magic java-bytecodes like `invokeDynamic
 
 ## Using Kamiloply
 
-##$ Using in Gradle
+## Using in Gradle
 
 Add following content in your `build.gradle`
 
@@ -23,7 +23,7 @@ dependencies {
 }
 ```
 
-##$ Using in Maven
+## Using in Maven
 
 TODO
 
