@@ -62,6 +62,7 @@ public class MyClass {
 
 ```java
 public class MyClass {
+    @DynamicCodeGenerate
     public static void myMethod() {
         // need add
         // dependencies { compileOnly 'org.ow2.asm:asm-tree' }
