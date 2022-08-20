@@ -524,4 +524,23 @@ public class BuiltinTransformers {
             met.invoke(instance, args);
         }
     }
+
+    public static class ThrowsSneakyBind extends Transformer {
+        @Override
+        public void process(KamiloplyTransform.TransformContext context) throws Exception {
+            if (context.step != KamiloplyTransform.TransformStep.METHOD) return;
+            MethodNode methodNode = context.currentMethod;
+
+            AnnotationNode annotation = findAnnotation(
+                    methodNode.invisibleAnnotations,
+                    "Lcom/kasukusakura/kamiloply/ThrowsSneaky;"
+            );
+            if (annotation == null) return;
+            methodNode.invisibleAnnotations.remove(annotation);
+
+            if (methodNode.exceptions != null) {
+                methodNode.exceptions.clear();
+            }
+        }
+    }
 }

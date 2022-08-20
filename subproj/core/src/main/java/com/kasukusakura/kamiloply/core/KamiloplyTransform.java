@@ -55,6 +55,7 @@ public class KamiloplyTransform {
 
         transformers.add(new BuiltinTransformers.ModifyBind());
         transformers.add(new BuiltinTransformers.CallSiteBindBind());
+        transformers.add(new BuiltinTransformers.ThrowsSneakyBind());
 
         return this;
     }
