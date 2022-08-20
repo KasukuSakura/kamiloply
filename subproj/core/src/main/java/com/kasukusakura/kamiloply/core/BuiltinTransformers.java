@@ -372,6 +372,13 @@ public class BuiltinTransformers {
                 if (name.startsWith("org.objectweb.asm.")) {
                     return AsmClassLoaderV.CWX.loadClass(name);
                 }
+                if (klasses.containsKey(name)) {
+                    synchronized (getClassLoadingLock(name)) {
+                        Class<?> loaded = findLoadedClass(name);
+                        if (loaded != null) return loaded;
+                        return findClass(name);
+                    }
+                }
                 return super.loadClass(name, resolve);
             }
 
