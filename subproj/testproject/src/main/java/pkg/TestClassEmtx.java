@@ -1,8 +1,6 @@
 package pkg;
 
-import com.kasukusakura.kamiloply.CallSiteBind;
-import com.kasukusakura.kamiloply.Modify;
-import com.kasukusakura.kamiloply.SimplifyOpcodes;
+import com.kasukusakura.kamiloply.*;
 
 import java.lang.invoke.LambdaMetafactory;
 import java.util.function.Consumer;
@@ -32,5 +30,12 @@ public class TestClassEmtx {
     public static native <T> Consumer<T> testwwxf(Consumer<T> ps);
 
     public static void normalMethod() {
+    }
+
+    @DynamicCodeGenerate
+    @Modify(directDelete = true)
+    public static void testDynamicCodeGenerate() {
+        KamiloplyTransformStub.acquireClassNode();
+        KamiloplyTransformStub.acquireClassNode();
     }
 }
