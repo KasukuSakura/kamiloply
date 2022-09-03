@@ -13,7 +13,7 @@ task stubJavadoc(type: Jar) {
 
 allprojects {
     group 'com.kasukusakura.kamiloply'
-    version '0.0.8'
+    version '0.0.9'
 
     pluginManager.withPlugin('java') {
         test {
