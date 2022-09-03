@@ -311,6 +311,7 @@ public class BuiltinTransformers {
                     ), bsmargs
             );
             methodNode.visitInsn(metT.getReturnType().getOpcode(Opcodes.IRETURN));
+            usedSlots += metT.getReturnType().getSize();
             methodNode.visitMaxs(usedSlots, usedSlots);
         }
     }
