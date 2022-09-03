@@ -97,6 +97,7 @@ public class KamiloplyTransformTask extends DefaultTask {
 
         @SuppressWarnings("resource")
         Stream<String> ptstream = direx.stream().map(File::toPath)
+                .filter(Files::isDirectory)
                 .flatMap(er(adir -> Files.walk(adir).filter(Files::isRegularFile).map(adir::relativize)))
                 .map(String::valueOf)
                 .filter(it -> it.endsWith(".class"))
