@@ -15,11 +15,13 @@ Add following content in your `build.gradle`
 ```groovy
 
 plugins {
-    id 'com.kasukusakura.kamiloply' version '$LATEST_VERSION'
+    id 'com.kasukusakura.kamiloply' version '0.0.7'
 }
 
 dependencies {
-    compileOnly 'com.kasukusakura.kamiloply:kamiloply-api:$LATEST_VERSION'
+    compileOnly 'com.kasukusakura.kamiloply:kamiloply-api:0.0.7'
+    // If @DynamicCodeGenerate used
+    compileOnly 'org.ow2.asm:asm-tree:9.3'
 }
 ```
 
