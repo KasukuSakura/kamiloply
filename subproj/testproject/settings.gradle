@@ -1,1 +1,3 @@
 rootProject.name = "kamiloply-gradle-test-project"
+
+include ':nested'

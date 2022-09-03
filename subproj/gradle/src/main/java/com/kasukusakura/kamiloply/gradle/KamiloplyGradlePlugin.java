@@ -4,10 +4,12 @@ import org.gradle.api.Plugin;
 import org.gradle.api.Project;
 import org.gradle.api.file.ConfigurableFileCollection;
 import org.gradle.api.internal.tasks.DefaultSourceSetOutput;
+import org.gradle.api.internal.tasks.DefaultTaskDependency;
 import org.gradle.api.tasks.SourceSetContainer;
 import org.gradle.api.tasks.TaskProvider;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class KamiloplyGradlePlugin implements Plugin<Project> {
     @Override
@@ -25,13 +27,19 @@ public class KamiloplyGradlePlugin implements Plugin<Project> {
 
                 classesDirs.setFrom(project.provider(() -> provider.get().getOutputs()));
 
+                DefaultTaskDependency dtd = (DefaultTaskDependency) ((DefaultSourceSetOutput) src.getOutput()).getClassesContributors();
+
+                DefaultTaskDependency copy = new DefaultTaskDependency();
+                copy.setValues(dtd.getMutableValues());
+
                 provider.configure(it -> {
                     it.srcs = oldSnapshot;
                     it.attached = src;
                     it.dependsOn(project.provider(src::getCompileClasspath));
                     it.dependsOn(oldSnapshot);
-                    it.dependsOn(((DefaultSourceSetOutput) src.getOutput()).getClassesContributors());
+                    it.dependsOn(copy);
                 });
+                dtd.setValues(Collections.singleton(provider));
             });
         });
     }

@@ -6,8 +6,9 @@ import pkg.TestClassEmtx;
 
 import java.util.function.Consumer;
 
-@SuppressWarnings({"NewClassNamingConvention", "unchecked"})
+@SuppressWarnings({"all"})
 public class CheckSfq {
+
     @Test
     public void checkNormalMethodExists() {
         TestClassEmtx.normalMethod();
